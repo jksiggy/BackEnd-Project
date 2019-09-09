@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Tool_N_GOOD.Models.UsageHistory>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tool)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TaskFor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Inspection)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Serviceable)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CheckoutTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpectedReturn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PromiseReturn)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tool.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskFor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Inspection)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Serviceable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CheckoutTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpectedReturn)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PromiseReturn)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.UsageHistoryId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.UsageHistoryId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.UsageHistoryId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
