@@ -15,21 +15,26 @@ namespace Tool_N_GOOD.Models
         public string Description { get; set; }
         [Required]
         public string Measurement { get; set; }
-       
+
+        [Display(Name = "Brand")]
         public int? BrandTypeId { get; set; }
-        
+
+        [Display(Name = "Brand")]
         public BrandType BrandType { get; set; }
         
         public int? ToolTypeId { get; set; }
-        
+
+        [Display(Name = "Type")]
         public ToolType ToolType { get; set; }
         [Required]
         public string UserId { get; set; }
-       
+
+        [Display(Name = "Owner")]
         public ApplicationUser User{ get; set; }
-        
+
         public int? MeasurementTypeId { get; set; }
         
+        [Display(Name = "Measure Type")]
         public MeasurementType MeasurementType { get; set; }
 
         public virtual ICollection<UsageHistory> UsageHistories { get; set; }

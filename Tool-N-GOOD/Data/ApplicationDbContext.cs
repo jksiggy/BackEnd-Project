@@ -64,6 +64,8 @@ namespace Tool_N_GOOD.Data
                 .HasForeignKey(t => t.ToolTypeId)
                 .OnDelete(DeleteBehavior.SetNull);
 
+
+
             modelBuilder.Entity<Tool>()
                 .HasOne(t => t.ToolType)
                 .WithMany(tt => tt.Tools)
