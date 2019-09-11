@@ -19,12 +19,20 @@ namespace Tool_N_GOOD.Controllers
             _context = context;
         }
 
-        // GET: Tools
+        // GET: GoodTools
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Tools.Include(t => t.BrandType).Include(t => t.MeasurementType).Include(t => t.ToolType).Include(t => t.User);
+            var applicationDbContext = _context.Tools.Include(t => t.BrandType).Include(t => t.MeasurementType).Include(t => t.ToolType).Include(t => t.User).Where(t => t.Serviceable == true);
             return View(await applicationDbContext.ToListAsync());
         }
+
+        // GET: BAdTools
+        public async Task<IActionResult> BadTool()
+        {
+            var applicationDbContext = _context.Tools.Include(t => t.BrandType).Include(t => t.MeasurementType).Include(t => t.ToolType).Include(t => t.User).Where(t => t.Serviceable == false);
+            return View(await applicationDbContext.ToListAsync());
+        }
+
 
         // GET: Tools/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -39,6 +47,8 @@ namespace Tool_N_GOOD.Controllers
                 .Include(t => t.MeasurementType)
                 .Include(t => t.ToolType)
                 .Include(t => t.User)
+                
+
                 .FirstOrDefaultAsync(m => m.ToolId == id);
             if (tool == null)
             {
@@ -63,7 +73,7 @@ namespace Tool_N_GOOD.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ToolId,Name,Description,Measurement,BrandTypeId,ToolTypeId,UserId,MeasurementTypeId")] Tool tool)
+        public async Task<IActionResult> Create([Bind("ToolId,Name,Description,Measurement,Serviceable,BrandTypeId,ToolTypeId,UserId,MeasurementTypeId")] Tool tool)
         {
             if (ModelState.IsValid)
             {
@@ -103,7 +113,7 @@ namespace Tool_N_GOOD.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ToolId,Name,Description,Measurement,BrandTypeId,ToolTypeId,UserId,MeasurementTypeId")] Tool tool)
+        public async Task<IActionResult> Edit(int id, [Bind("ToolId,Name,Description,Measurement,Serviceable,BrandTypeId,ToolTypeId,UserId,MeasurementTypeId")] Tool tool)
         {
             if (id != tool.ToolId)
             {

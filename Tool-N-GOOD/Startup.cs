@@ -66,7 +66,7 @@ namespace Tool_N_GOOD
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Tools}/{action=Index}/{id?}");
             });
         }
     }

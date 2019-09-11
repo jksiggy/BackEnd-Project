@@ -64,6 +64,8 @@ namespace Tool_N_GOOD.Data
                 .HasForeignKey(t => t.ToolTypeId)
                 .OnDelete(DeleteBehavior.SetNull);
 
+
+
             modelBuilder.Entity<Tool>()
                 .HasOne(t => t.ToolType)
                 .WithMany(tt => tt.Tools)
@@ -172,6 +174,7 @@ namespace Tool_N_GOOD.Data
                 Name = "Screw Driver",
                 Description = "Red Handle",
                 Measurement = "14 inches",
+                Serviceable = true,
                 BrandTypeId = 3,
                 MeasurementTypeId = 1,
                 ToolTypeId = 2,
@@ -185,6 +188,7 @@ namespace Tool_N_GOOD.Data
                  Name = "Hammer",
                  Description = "Sledge sides",
                  Measurement = "1/2 lbs",
+                 Serviceable = false,
                  BrandTypeId = 1,
                  MeasurementTypeId = 2,
                  ToolTypeId = 2,
@@ -198,6 +202,7 @@ namespace Tool_N_GOOD.Data
                   Name = "Pipe Wrench",
                   Description = "Silver Tip",
                   Measurement = "4 inches ",
+                  Serviceable = true,
                   MeasurementTypeId = 1,
                   BrandTypeId = 2,
                   ToolTypeId = 2,
@@ -211,6 +216,7 @@ namespace Tool_N_GOOD.Data
                    Name = "Pliers",
                    Description = "Rubber handle",
                    Measurement = "3/4",
+                   Serviceable = false,
                    MeasurementTypeId = 2,
                    BrandTypeId = 5,
                    ToolTypeId = 1,

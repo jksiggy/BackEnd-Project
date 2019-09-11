@@ -27,6 +27,11 @@
                 <input asp-for="Measurement" class="form-control" />
                 <span asp-validation-for="Measurement" class="text-danger"></span>
             </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Serviceable" /> @Html.DisplayNameFor(model => model.Serviceable)
+                </label>
+            </div>
             <div class="form-group">
                 <label asp-for="BrandTypeId" class="control-label"></label>
                 <select asp-for="BrandTypeId" class ="form-control" asp-items="ViewBag.BrandTypeId"></select>

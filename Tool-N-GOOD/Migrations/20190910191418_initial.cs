@@ -205,6 +205,7 @@ namespace Tool_N_GOOD.Migrations
                     Name = table.Column<string>(nullable: false),
                     Description = table.Column<string>(nullable: false),
                     Measurement = table.Column<string>(nullable: false),
+                    Serviceable = table.Column<bool>(nullable: false),
                     BrandTypeId = table.Column<int>(nullable: true),
                     ToolTypeId = table.Column<int>(nullable: true),
                     UserId = table.Column<string>(nullable: false),
@@ -274,7 +275,7 @@ namespace Tool_N_GOOD.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "Occupation", "PasswordHash", "Phone", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "00000000-ffff-ffff-ffff-ffffffffffff", 0, "a2da557b-bdd3-4f26-8d48-e84ab4a08377", "warren@homedepot.com", true, "warren", "delenger", false, null, "WARREN@HOMEDEPOT.COM", "WARREN@HOMEDEPOT.COM", "Mechanic 5", "AQAAAAEAACcQAAAAEAgb8dfCadUnOnP8NiYMmhdEDxzb4LbrOMNgjec1VmkBckcLxzYJiw+rXPvfvXZ3WQ==", "615 473 434", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "warren@homedepot.com" });
+                values: new object[] { "00000000-ffff-ffff-ffff-ffffffffffff", 0, "b2083bd4-e60f-4c9e-a71d-3ce895ef9084", "warren@homedepot.com", true, "warren", "delenger", false, null, "WARREN@HOMEDEPOT.COM", "WARREN@HOMEDEPOT.COM", "Mechanic 5", "AQAAAAEAACcQAAAAEIRpxFl3fvvQc/mwJn7Q3S8f0Br/U5GBcc0eLqB+C4AZqpWFl+wWitC5tt4J+vf9UA==", "615 473 434", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "warren@homedepot.com" });
 
             migrationBuilder.InsertData(
                 table: "BrandTypes",
@@ -310,13 +311,13 @@ namespace Tool_N_GOOD.Migrations
 
             migrationBuilder.InsertData(
                 table: "Tools",
-                columns: new[] { "ToolId", "BrandTypeId", "Description", "Measurement", "MeasurementTypeId", "Name", "ToolTypeId", "UserId" },
+                columns: new[] { "ToolId", "BrandTypeId", "Description", "Measurement", "MeasurementTypeId", "Name", "Serviceable", "ToolTypeId", "UserId" },
                 values: new object[,]
                 {
-                    { 4, 5, "Rubber handle", "3/4", 2, "Pliers", 1, "00000000-ffff-ffff-ffff-ffffffffffff" },
-                    { 1, 3, "Red Handle", "14 inches", 1, "Screw Driver", 2, "00000000-ffff-ffff-ffff-ffffffffffff" },
-                    { 2, 1, "Sledge sides", "1/2 lbs", 2, "Hammer", 2, "00000000-ffff-ffff-ffff-ffffffffffff" },
-                    { 3, 2, "Silver Tip", "4 inches ", 1, "Pipe Wrench", 2, "00000000-ffff-ffff-ffff-ffffffffffff" }
+                    { 4, 5, "Rubber handle", "3/4", 2, "Pliers", false, 1, "00000000-ffff-ffff-ffff-ffffffffffff" },
+                    { 1, 3, "Red Handle", "14 inches", 1, "Screw Driver", true, 2, "00000000-ffff-ffff-ffff-ffffffffffff" },
+                    { 2, 1, "Sledge sides", "1/2 lbs", 2, "Hammer", false, 2, "00000000-ffff-ffff-ffff-ffffffffffff" },
+                    { 3, 2, "Silver Tip", "4 inches ", 1, "Pipe Wrench", true, 2, "00000000-ffff-ffff-ffff-ffffffffffff" }
                 });
 
             migrationBuilder.InsertData(
