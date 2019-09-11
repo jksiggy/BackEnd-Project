@@ -10,7 +10,7 @@ using Tool_N_GOOD.Data;
 namespace Tool_N_GOOD.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190909184139_initial")]
+    [Migration("20190910191418_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -202,7 +202,7 @@ namespace Tool_N_GOOD.Migrations
                         {
                             Id = "00000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a2da557b-bdd3-4f26-8d48-e84ab4a08377",
+                            ConcurrencyStamp = "b2083bd4-e60f-4c9e-a71d-3ce895ef9084",
                             Email = "warren@homedepot.com",
                             EmailConfirmed = true,
                             FirstName = "warren",
@@ -211,7 +211,7 @@ namespace Tool_N_GOOD.Migrations
                             NormalizedEmail = "WARREN@HOMEDEPOT.COM",
                             NormalizedUserName = "WARREN@HOMEDEPOT.COM",
                             Occupation = "Mechanic 5",
-                            PasswordHash = "AQAAAAEAACcQAAAAEAgb8dfCadUnOnP8NiYMmhdEDxzb4LbrOMNgjec1VmkBckcLxzYJiw+rXPvfvXZ3WQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEIRpxFl3fvvQc/mwJn7Q3S8f0Br/U5GBcc0eLqB+C4AZqpWFl+wWitC5tt4J+vf9UA==",
                             Phone = "615 473 434",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
@@ -306,6 +306,8 @@ namespace Tool_N_GOOD.Migrations
                     b.Property<string>("Name")
                         .IsRequired();
 
+                    b.Property<bool>("Serviceable");
+
                     b.Property<int?>("ToolTypeId");
 
                     b.Property<string>("UserId")
@@ -332,6 +334,7 @@ namespace Tool_N_GOOD.Migrations
                             Measurement = "14 inches",
                             MeasurementTypeId = 1,
                             Name = "Screw Driver",
+                            Serviceable = true,
                             ToolTypeId = 2,
                             UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
@@ -343,6 +346,7 @@ namespace Tool_N_GOOD.Migrations
                             Measurement = "1/2 lbs",
                             MeasurementTypeId = 2,
                             Name = "Hammer",
+                            Serviceable = false,
                             ToolTypeId = 2,
                             UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
@@ -354,6 +358,7 @@ namespace Tool_N_GOOD.Migrations
                             Measurement = "4 inches ",
                             MeasurementTypeId = 1,
                             Name = "Pipe Wrench",
+                            Serviceable = true,
                             ToolTypeId = 2,
                             UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         },
@@ -365,6 +370,7 @@ namespace Tool_N_GOOD.Migrations
                             Measurement = "3/4",
                             MeasurementTypeId = 2,
                             Name = "Pliers",
+                            Serviceable = false,
                             ToolTypeId = 1,
                             UserId = "00000000-ffff-ffff-ffff-ffffffffffff"
                         });

@@ -15,6 +15,8 @@ namespace Tool_N_GOOD.Models
         public string Description { get; set; }
         [Required]
         public string Measurement { get; set; }
+        [Required]
+        public bool Serviceable { get; set; }
 
         [Display(Name = "Brand")]
         public int? BrandTypeId { get; set; }
