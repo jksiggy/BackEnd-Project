@@ -4,13 +4,14 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
 <table class="table">
     <thead>
+
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
@@ -34,13 +35,15 @@
                 @Html.DisplayNameFor(model => model.User)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MeasurementType)
+                @Html.DisplayNameFor(model => model.Measurement)
             </th>
+            
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model)
+        {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
@@ -61,17 +64,33 @@
                 @Html.DisplayFor(modelItem => item.ToolType.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.User.Id)
+                @Html.DisplayFor(modelItem => item.User.FullName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.MeasurementType.Type)
+                @Html.DisplayFor(modelItem => item.Measurement)
             </td>
+           
+
+
+
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ToolId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ToolId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ToolId">Delete</a>
+                @if (!(item.UsageHistories?.ToList().Count > 0) || !(item.UsageHistories?.ToList()[0].CheckoutTime != null))
+                {
+                <a asp-action="Create" asp-controller="UsageHistories" asp-route-id="@item.ToolId">Check-Out Tool</a>
+                
+                }
+                    <a asp-action="Delete"  asp-route-id="@item.ToolId">Delete</a>
+                    <a asp-action="Edit"  asp-route-id="@item.ToolId">Edit</a>
+                    <a asp-action="Details"  asp-route-id="@item.ToolId">Details</a>
+                
+               
+
             </td>
+           
+
+
+
         </tr>
-}
+        }
     </tbody>
 </table>

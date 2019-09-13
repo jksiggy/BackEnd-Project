@@ -275,7 +275,7 @@ namespace Tool_N_GOOD.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "Occupation", "PasswordHash", "Phone", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "00000000-ffff-ffff-ffff-ffffffffffff", 0, "b2083bd4-e60f-4c9e-a71d-3ce895ef9084", "warren@homedepot.com", true, "warren", "delenger", false, null, "WARREN@HOMEDEPOT.COM", "WARREN@HOMEDEPOT.COM", "Mechanic 5", "AQAAAAEAACcQAAAAEIRpxFl3fvvQc/mwJn7Q3S8f0Br/U5GBcc0eLqB+C4AZqpWFl+wWitC5tt4J+vf9UA==", "615 473 434", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "warren@homedepot.com" });
+                values: new object[] { "00000000-ffff-ffff-ffff-ffffffffffff", 0, "3e757ae4-4d37-4337-9be6-eb6f2d1041ec", "warren@homedepot.com", true, "warren", "delenger", false, null, "WARREN@HOMEDEPOT.COM", "WARREN@HOMEDEPOT.COM", "Mechanic 5", "AQAAAAEAACcQAAAAEG3Vm+f45eerUISM0Bpa6GYNrdZ+FiKIo2Et3p9BDgfqWgAlZrEYVCjaGoTgbAfWMg==", "615 473 434", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "warren@homedepot.com" });
 
             migrationBuilder.InsertData(
                 table: "BrandTypes",

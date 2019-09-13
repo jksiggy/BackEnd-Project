@@ -7,6 +7,7 @@ namespace Tool_N_GOOD.Models
 {
     public class Tool
     {
+       
         [Key]
         public int ToolId { get; set; }
         [Required]
@@ -40,7 +41,6 @@ namespace Tool_N_GOOD.Models
         public MeasurementType MeasurementType { get; set; }
 
         public virtual ICollection<UsageHistory> UsageHistories { get; set; }
-
-
+    
     }
 }

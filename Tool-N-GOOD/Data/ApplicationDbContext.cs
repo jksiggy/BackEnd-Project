@@ -167,6 +167,22 @@ namespace Tool_N_GOOD.Data
            }
            );
 
+            modelBuilder.Entity<UsageHistory>().HasData(
+            new UsageHistory()
+            {
+                UsageHistoryId = 1,
+                UserId = user.Id,
+                ToolId = 4,
+                TaskFor = "Fix the Gate",
+                Inspection = true,
+                Serviceable = true,
+                ExpectedReturn = new DateTime(2019, 11, 11),
+                PromiseReturn = new DateTime(2019, 12, 12),
+
+
+            }
+            );
+
             modelBuilder.Entity<Tool>().HasData(
             new Tool()
             {
@@ -252,21 +268,6 @@ namespace Tool_N_GOOD.Data
 
            }
           );
-            modelBuilder.Entity<UsageHistory>().HasData(
-            new UsageHistory()
-            {
-                UsageHistoryId = 1,
-                UserId = user.Id,
-                ToolId = 4,
-                TaskFor = "Fix the Gate",
-                Inspection = true,
-                Serviceable = true,
-                ExpectedReturn = new DateTime(2019, 11, 11),
-                PromiseReturn = new DateTime(2019, 12, 12),
-
-
-            }
-            );
 
 
 

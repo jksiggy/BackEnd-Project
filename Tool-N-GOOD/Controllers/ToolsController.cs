@@ -22,13 +22,14 @@ namespace Tool_N_GOOD.Controllers
         // GET: GoodTools
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Tools.Include(t => t.BrandType).Include(t => t.MeasurementType).Include(t => t.ToolType).Include(t => t.User).Where(t => t.Serviceable == true);
+            var applicationDbContext = _context.Tools.Include(t => t.BrandType).Include(t => t.MeasurementType).Include(t => t.ToolType).Include(t => t.User).Include(t => t.UsageHistories).Where(t => t.Serviceable == true);
             return View(await applicationDbContext.ToListAsync());
         }
 
         // GET: BAdTools
         public async Task<IActionResult> BadTool()
         {
+            
             var applicationDbContext = _context.Tools.Include(t => t.BrandType).Include(t => t.MeasurementType).Include(t => t.ToolType).Include(t => t.User).Where(t => t.Serviceable == false);
             return View(await applicationDbContext.ToListAsync());
         }

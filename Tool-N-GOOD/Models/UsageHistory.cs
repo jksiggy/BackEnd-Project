@@ -8,22 +8,34 @@ namespace Tool_N_GOOD.Models
 {
     public class UsageHistory
     {
+        
+
         [Key]
         public int UsageHistoryId { get; set; }
-        [Required]
         
+        [Required]
         public string UserId { get; set; }
 
         [Display(Name = "Borrower")]
         public ApplicationUser User { get; set; }
-        [Required]
+      
         public int ToolId { get; set; }
         public Tool Tool { get; set; }
         [Required]
         [Display(Name = "Work")]
         public string TaskFor { get; set; }
-        [Required]
+
+
+         [Required(AllowEmptyStrings = false, ErrorMessage = "Site name is required.")]
+        [InspectionValidation ]
         public bool Inspection { get; set; }
+
+        //public UsageHistory()
+        //{
+        //    Inspection = true;
+
+        //}
+
         [Required]
         public bool Serviceable { get; set; }
 
@@ -38,5 +50,15 @@ namespace Tool_N_GOOD.Models
         [Required]
         [Display(Name = "Date Return ")]
         public DateTime PromiseReturn { get; set; }
+    }
+
+    public class InspectionValidation : ValidationAttribute
+    {
+        public override bool IsValid(object value)
+        {
+            if (value == null) return false;
+            if (value.GetType() != typeof(bool)) throw new InvalidOperationException("bad choice");
+            return (bool) value;
+        }
     }
 }
