@@ -1,42 +1,42 @@
-﻿@model IEnumerable<Tool_N_GOOD.Models.UsageHistory>
+﻿@page
+@model Tool_N_GOOD.Areas.Identity.Pages.Account.Manage.UsageHistoryModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "UsageHistory";
+    ViewData["ActivePage"] = ManageNavPages.UsageHistory;
 }
 
+<h1>Usage History</h1>
 
-<p>
-    <a asp-action="Create">New Tool</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.User)
+                @Html.DisplayNameFor(model => model.UsageHistory[0].User)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Tool)
+                @Html.DisplayNameFor(model => model.UsageHistory[0].Tool)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TaskFor)
+                @Html.DisplayNameFor(model => model.UsageHistory[0].TaskFor)
+            </th>
+           
+           
+            <th>
+                @Html.DisplayNameFor(model => model.UsageHistory[0].CheckoutTime)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Inspection)
+                @Html.DisplayNameFor(model => model.UsageHistory[0].ExpectedReturn)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CheckoutTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ExpectedReturn)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PromiseReturn)
+                @Html.DisplayNameFor(model => model.UsageHistory[0].PromiseReturn)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.UsageHistory) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.User.FullName)
@@ -48,9 +48,6 @@
                 @Html.DisplayFor(modelItem => item.TaskFor)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Inspection)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.CheckoutTime)
             </td>
             <td>
@@ -60,9 +57,9 @@
                 @Html.DisplayFor(modelItem => item.PromiseReturn)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.UsageHistoryId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.UsageHistoryId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.UsageHistoryId">Delete</a>
+                <a asp-action="Details" asp-controller="UsageHistories" asp-route-id="@item.UsageHistoryId">Details</a> |
+                <a asp-action="Edit" asp-controller="UsageHistories" asp-route-id="@item.UsageHistoryId">Edit</a> |
+
             </td>
         </tr>
 }

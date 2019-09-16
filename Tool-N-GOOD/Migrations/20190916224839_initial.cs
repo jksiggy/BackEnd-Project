@@ -252,7 +252,7 @@ namespace Tool_N_GOOD.Migrations
                     Inspection = table.Column<bool>(nullable: false),
                     Serviceable = table.Column<bool>(nullable: false),
                     CheckoutTime = table.Column<DateTime>(nullable: false, defaultValueSql: "getdate()"),
-                    ExpectedReturn = table.Column<DateTime>(nullable: true),
+                    ExpectedReturn = table.Column<DateTime>(nullable: false),
                     PromiseReturn = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
@@ -275,7 +275,7 @@ namespace Tool_N_GOOD.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "Occupation", "PasswordHash", "Phone", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "00000000-ffff-ffff-ffff-ffffffffffff", 0, "3e757ae4-4d37-4337-9be6-eb6f2d1041ec", "warren@homedepot.com", true, "warren", "delenger", false, null, "WARREN@HOMEDEPOT.COM", "WARREN@HOMEDEPOT.COM", "Mechanic 5", "AQAAAAEAACcQAAAAEG3Vm+f45eerUISM0Bpa6GYNrdZ+FiKIo2Et3p9BDgfqWgAlZrEYVCjaGoTgbAfWMg==", "615 473 434", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "warren@homedepot.com" });
+                values: new object[] { "00000000-ffff-ffff-ffff-ffffffffffff", 0, "877b0515-1de2-4f6f-9d0e-6b9c095ae909", "warren@homedepot.com", true, "warren", "delenger", false, null, "WARREN@HOMEDEPOT.COM", "WARREN@HOMEDEPOT.COM", "Mechanic 5", "AQAAAAEAACcQAAAAEBORzR1PzabH8kGi6yd82WbpnMOZpMInMVHe6cnVHTf9GyBrJQrLuR1qBp20wAc0pQ==", "615 473 434", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "warren@homedepot.com" });
 
             migrationBuilder.InsertData(
                 table: "BrandTypes",

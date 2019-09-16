@@ -20,9 +20,6 @@
                 @Html.DisplayNameFor(model => model.Measurement)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Serviceable)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.BrandType)
             </th>
             <th>
@@ -50,22 +47,19 @@
                 @Html.DisplayFor(modelItem => item.Measurement)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Serviceable)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.BrandType.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ToolType.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.User.Id)
+                @Html.DisplayFor(modelItem => item.User.FullName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MeasurementType.Type)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ToolId">Edit</a> |
+                <a asp-action="Edit" asp-route-id="@item.ToolId">Edit</a> 
                 
             </td>
         </tr>

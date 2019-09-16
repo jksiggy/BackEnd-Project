@@ -200,7 +200,7 @@ namespace Tool_N_GOOD.Migrations
                         {
                             Id = "00000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3e757ae4-4d37-4337-9be6-eb6f2d1041ec",
+                            ConcurrencyStamp = "877b0515-1de2-4f6f-9d0e-6b9c095ae909",
                             Email = "warren@homedepot.com",
                             EmailConfirmed = true,
                             FirstName = "warren",
@@ -209,7 +209,7 @@ namespace Tool_N_GOOD.Migrations
                             NormalizedEmail = "WARREN@HOMEDEPOT.COM",
                             NormalizedUserName = "WARREN@HOMEDEPOT.COM",
                             Occupation = "Mechanic 5",
-                            PasswordHash = "AQAAAAEAACcQAAAAEG3Vm+f45eerUISM0Bpa6GYNrdZ+FiKIo2Et3p9BDgfqWgAlZrEYVCjaGoTgbAfWMg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEBORzR1PzabH8kGi6yd82WbpnMOZpMInMVHe6cnVHTf9GyBrJQrLuR1qBp20wAc0pQ==",
                             Phone = "615 473 434",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
@@ -421,7 +421,8 @@ namespace Tool_N_GOOD.Migrations
                         .ValueGeneratedOnAdd()
                         .HasDefaultValueSql("getdate()");
 
-                    b.Property<DateTime?>("ExpectedReturn");
+                    b.Property<DateTime?>("ExpectedReturn")
+                        .IsRequired();
 
                     b.Property<bool>("Inspection");
 
