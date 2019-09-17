@@ -48,7 +48,7 @@ namespace Tool_N_GOOD.Models
         [Display(Name = "Expected Date")]
         public DateTime? ExpectedReturn { get; set; }
 
-        
+        [DataType(DataType.Date)]
         [Display(Name = "Date Return ")]
         public DateTime? PromiseReturn { get; set; }
     }

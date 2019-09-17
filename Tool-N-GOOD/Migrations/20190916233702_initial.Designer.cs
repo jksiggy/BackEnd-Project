@@ -10,7 +10,7 @@ using Tool_N_GOOD.Data;
 namespace Tool_N_GOOD.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190916224839_initial")]
+    [Migration("20190916233702_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -202,7 +202,7 @@ namespace Tool_N_GOOD.Migrations
                         {
                             Id = "00000000-ffff-ffff-ffff-ffffffffffff",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "877b0515-1de2-4f6f-9d0e-6b9c095ae909",
+                            ConcurrencyStamp = "eeb31451-4416-4a1d-8610-84df4fdd3efe",
                             Email = "warren@homedepot.com",
                             EmailConfirmed = true,
                             FirstName = "warren",
@@ -211,7 +211,7 @@ namespace Tool_N_GOOD.Migrations
                             NormalizedEmail = "WARREN@HOMEDEPOT.COM",
                             NormalizedUserName = "WARREN@HOMEDEPOT.COM",
                             Occupation = "Mechanic 5",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBORzR1PzabH8kGi6yd82WbpnMOZpMInMVHe6cnVHTf9GyBrJQrLuR1qBp20wAc0pQ==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFjTvHzGH6OUr6Aj6OLQeJVAL2iNsiqF+RYpmrMvMwKl2Nlr/+5hqI8tVNSFksAGMw==",
                             Phone = "615 473 434",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "7f434309-a4d9-48e9-9ebb-8803db794577",
@@ -428,7 +428,9 @@ namespace Tool_N_GOOD.Migrations
 
                     b.Property<bool>("Inspection");
 
-                    b.Property<DateTime>("PromiseReturn");
+                    b.Property<DateTime?>("PromiseReturn")
+                        .ValueGeneratedOnAdd()
+                        .HasDefaultValueSql("getdate()");
 
                     b.Property<bool>("Serviceable");
 

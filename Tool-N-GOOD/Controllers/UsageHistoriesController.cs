@@ -73,6 +73,7 @@ namespace Tool_N_GOOD.Controllers
         {
             //UsageHistory.UserId = user.Id;
             ModelState.Remove("CheckoutTime");
+            ModelState.Remove("PromiseReturn");
             ModelState.Remove("UserId");
 
             if (ModelState.IsValid)
@@ -98,6 +99,7 @@ namespace Tool_N_GOOD.Controllers
         // GET: UsageHistories/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            
             if (id == null)
             {
                 return NotFound();
@@ -124,11 +126,18 @@ namespace Tool_N_GOOD.Controllers
             {
                 return NotFound();
             }
-
+            ModelState.Remove("UserId");
             if (ModelState.IsValid)
             {
+                ApplicationUser user = await GetCurrentUserAsync();
+                var tool = await _context.Tools
+                .FirstOrDefaultAsync(t => t.ToolId == id);
+
+                usageHistory.UserId = user.Id;
+                usageHistory.ToolId = tool.ToolId;
                 try
                 {
+
                     _context.Update(usageHistory);
                     await _context.SaveChangesAsync();
                 }
@@ -149,6 +158,8 @@ namespace Tool_N_GOOD.Controllers
             ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id", usageHistory.UserId);
             return View(usageHistory);
         }
+
+        
 
         // GET: UsageHistories/Delete/5
         public async Task<IActionResult> Delete(int? id)

@@ -13,16 +13,7 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="UsageHistoryId" />
-            <div class="form-group">
-                <label asp-for="UserId" class="control-label"></label>
-                <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
-                <span asp-validation-for="UserId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ToolId" class="control-label"></label>
-                <select asp-for="ToolId" class="form-control" asp-items="ViewBag.ToolId"></select>
-                <span asp-validation-for="ToolId" class="text-danger"></span>
-            </div>
+            
             <div class="form-group">
                 <label asp-for="TaskFor" class="control-label"></label>
                 <input asp-for="TaskFor" class="form-control" />
