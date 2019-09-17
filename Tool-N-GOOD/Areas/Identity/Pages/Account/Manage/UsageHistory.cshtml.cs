@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -12,20 +13,28 @@ namespace Tool_N_GOOD.Areas.Identity.Pages.Account.Manage
 {
     public class UsageHistoryModel : PageModel
     {
-        private readonly Tool_N_GOOD.Data.ApplicationDbContext _context;
 
-        public UsageHistoryModel(Tool_N_GOOD.Data.ApplicationDbContext context)
+        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly ApplicationDbContext _context;
+        public UsageHistoryModel(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
-        public IList<UsageHistory> UsageHistory { get;set; }
-
-        public async Task OnGetAsync()
+        public List<UsageHistory> UsageHistoryies
         {
-            UsageHistory = await _context.UsageHistoryies
-                .Include(u => u.Tool)
-                .Include(u => u.User).ToListAsync();
+            get
+            {
+                return _context.UsageHistoryies
+                    .Where(u => u.UserId == _userManager.GetUserId(User))
+                    .Include(u => u.Tool)
+                    .ToList();
+            }
+        }
+        public void OnGet()
+        {
+
         }
     }
 }

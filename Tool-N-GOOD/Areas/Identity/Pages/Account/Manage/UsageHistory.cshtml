@@ -13,30 +13,30 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.UsageHistory[0].User)
+                @Html.DisplayNameFor(model => model.UsageHistoryies[0].User)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UsageHistory[0].Tool)
+                @Html.DisplayNameFor(model => model.UsageHistoryies[0].Tool)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UsageHistory[0].TaskFor)
+                @Html.DisplayNameFor(model => model.UsageHistoryies[0].TaskFor)
             </th>
            
            
             <th>
-                @Html.DisplayNameFor(model => model.UsageHistory[0].CheckoutTime)
+                @Html.DisplayNameFor(model => model.UsageHistoryies[0].CheckoutTime)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UsageHistory[0].ExpectedReturn)
+                @Html.DisplayNameFor(model => model.UsageHistoryies[0].ExpectedReturn)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UsageHistory[0].PromiseReturn)
+                @Html.DisplayNameFor(model => model.UsageHistoryies[0].PromiseReturn)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.UsageHistory) {
+@foreach (var item in Model.UsageHistoryies) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.User.FullName)
@@ -57,8 +57,8 @@
                 @Html.DisplayFor(modelItem => item.PromiseReturn)
             </td>
             <td>
-                <a asp-action="Details" asp-controller="UsageHistories" asp-route-id="@item.UsageHistoryId">Details</a> |
-                <a asp-action="Edit" asp-controller="UsageHistories" asp-route-id="@item.UsageHistoryId">Edit</a> |
+                <a asp-action="Details" asp-controller="UsageHistories" asp-route-id="@item.UsageHistoryId">Details</a> 
+                <a asp-action="Edit" asp-controller="UsageHistories" asp-route-id="@item.UsageHistoryId">Edit</a> 
 
             </td>
         </tr>

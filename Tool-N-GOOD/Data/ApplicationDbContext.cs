@@ -56,9 +56,7 @@ namespace Tool_N_GOOD.Data
                 .Property(b => b.CheckoutTime)
                 .HasDefaultValueSql("getdate()");
 
-            modelBuilder.Entity<UsageHistory>()
-                .Property(b => b.PromiseReturn)
-                .HasDefaultValueSql("getdate()");
+           
 
 
 

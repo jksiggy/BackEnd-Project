@@ -30,11 +30,6 @@ namespace Tool_N_GOOD.Models
         [InspectionValidation(ErrorMessage ="bad")]
         public bool Inspection { get; set; }
 
-        //public UsageHistory()
-        //{
-        //    Inspection = true;
-
-        //}
 
         [Required]
         public bool Serviceable { get; set; }
@@ -45,11 +40,12 @@ namespace Tool_N_GOOD.Models
         public DateTime? CheckoutTime { get; set; }
 
         [Required]
-        [Display(Name = "Expected Date")]
+        [Display(Name = "Expected Return Date")]
         public DateTime? ExpectedReturn { get; set; }
 
-        [DataType(DataType.Date)]
-        [Display(Name = "Date Return ")]
+     
+        [Display(Name = "Actual Return Date")]
+        [MyDate(ErrorMessage = "Put Todays Date")]
         public DateTime? PromiseReturn { get; set; }
     }
 
@@ -60,6 +56,16 @@ namespace Tool_N_GOOD.Models
             if (value == null) return false;
             if (value.GetType() != typeof(bool)) throw new InvalidOperationException("bad choice");
             return (bool)value;
+        }
+    }
+
+    public class MyDateAttribute : ValidationAttribute
+    {
+        public override bool IsValid(object value)// Return a boolean value: true == IsValid, false != IsValid
+        {
+            DateTime d = Convert.ToDateTime(value);
+            return d >= DateTime.Now; //Dates  equal to today are valid (true)
+
         }
     }
 }

@@ -75,11 +75,16 @@
 
 
                 <td>
-                    @if (!(item.UsageHistories?.ToList().Count > 0) || !(item.UsageHistories?.ToList()[0].CheckoutTime != null))
-                    {
-                        <a asp-action="Create" asp-controller="UsageHistories" asp-route-id="@item.ToolId">Check-Out Tool</a>
+                    @if (!(item.UsageHistories?.ToList().Count > 0) || !(item.UsageHistories?.ToList()[item.UsageHistories.ToList().Count -1].CheckoutTime != null
+                    && !(item.UsageHistories?.ToList()[item.UsageHistories.ToList().Count -1].PromiseReturn != null)))
+                    
+                        {
+                       
+                        
+                            <a asp-action="Create" asp-controller="UsageHistories" asp-route-id="@item.ToolId">Check-Out Tool</a>
 
-                    }
+                            
+                        }
                     <a asp-action="Delete" asp-route-id="@item.ToolId">Delete</a>
                     <a asp-action="Edit" asp-route-id="@item.ToolId">Edit</a>
                     <a asp-action="Details" asp-route-id="@item.ToolId">Details</a>

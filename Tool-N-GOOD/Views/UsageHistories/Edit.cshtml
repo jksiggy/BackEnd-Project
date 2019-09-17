@@ -13,7 +13,7 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="UsageHistoryId" />
-            
+            <input type="hidden" asp-for="ToolId" />
             <div class="form-group">
                 <label asp-for="TaskFor" class="control-label"></label>
                 <input asp-for="TaskFor" class="form-control" />

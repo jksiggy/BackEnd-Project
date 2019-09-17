@@ -78,7 +78,7 @@ namespace Tool_N_GOOD.Controllers
 
             if (ModelState.IsValid)
             {
-            ApplicationUser user = await GetCurrentUserAsync();
+                ApplicationUser user = await GetCurrentUserAsync();
                 var tool = await _context.Tools
                 .FirstOrDefaultAsync(t => t.ToolId == id);
 
@@ -93,13 +93,13 @@ namespace Tool_N_GOOD.Controllers
             return View(usageHistory);
         }
 
-       
+
 
 
         // GET: UsageHistories/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            
+
             if (id == null)
             {
                 return NotFound();
@@ -122,22 +122,13 @@ namespace Tool_N_GOOD.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("UsageHistoryId,UserId,ToolId,TaskFor,Inspection,Serviceable,CheckoutTime,ExpectedReturn,PromiseReturn")] UsageHistory usageHistory)
         {
-            if (id != usageHistory.UsageHistoryId)
-            {
-                return NotFound();
-            }
             ModelState.Remove("UserId");
             if (ModelState.IsValid)
             {
-                ApplicationUser user = await GetCurrentUserAsync();
-                var tool = await _context.Tools
-                .FirstOrDefaultAsync(t => t.ToolId == id);
-
-                usageHistory.UserId = user.Id;
-                usageHistory.ToolId = tool.ToolId;
                 try
                 {
-
+                    ApplicationUser user = await GetCurrentUserAsync();
+                    usageHistory.UserId = user.Id;
                     _context.Update(usageHistory);
                     await _context.SaveChangesAsync();
                 }
@@ -159,7 +150,7 @@ namespace Tool_N_GOOD.Controllers
             return View(usageHistory);
         }
 
-        
+
 
         // GET: UsageHistories/Delete/5
         public async Task<IActionResult> Delete(int? id)
