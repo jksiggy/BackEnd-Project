@@ -4,11 +4,9 @@
     ViewData["Title"] = "BadTool";
 }
 
-<h1>BadTool</h1>
+<h1>Bad Tool</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -20,9 +18,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Measurement)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Serviceable)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.BrandType)
@@ -52,24 +47,21 @@
                 @Html.DisplayFor(modelItem => item.Measurement)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Serviceable)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.BrandType.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ToolType.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.User.Id)
+                @Html.DisplayFor(modelItem => item.User.FullName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MeasurementType.Type)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ToolId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ToolId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ToolId">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.ToolId" class="btn btn-primary">Edit</a>
+                <a asp-action="Delete" asp-route-id="@item.ToolId" class="btn btn-outline-secondary">REMOVE TOOL</a>
+
             </td>
         </tr>
 }

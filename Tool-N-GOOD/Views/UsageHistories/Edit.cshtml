@@ -6,37 +6,20 @@
 
 <h1>Edit</h1>
 
-<h4>UsageHistory</h4>
+<h4>Usage History</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="UsageHistoryId" />
-            <div class="form-group">
-                <label asp-for="UserId" class="control-label"></label>
-                <select asp-for="UserId" class="form-control" asp-items="ViewBag.UserId"></select>
-                <span asp-validation-for="UserId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ToolId" class="control-label"></label>
-                <select asp-for="ToolId" class="form-control" asp-items="ViewBag.ToolId"></select>
-                <span asp-validation-for="ToolId" class="text-danger"></span>
-            </div>
+            <input type="hidden" asp-for="ToolId" />
             <div class="form-group">
                 <label asp-for="TaskFor" class="control-label"></label>
                 <input asp-for="TaskFor" class="form-control" />
+                <input type="hidden" asp-for="Inspection" class="form-group form-check">
+                <input type="hidden" asp-for="Serviceable" class="form-group form-check">
                 <span asp-validation-for="TaskFor" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Inspection" /> @Html.DisplayNameFor(model => model.Inspection)
-                </label>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Serviceable" /> @Html.DisplayNameFor(model => model.Serviceable)
-                </label>
             </div>
             <div class="form-group">
                 <label asp-for="CheckoutTime" class="control-label"></label>

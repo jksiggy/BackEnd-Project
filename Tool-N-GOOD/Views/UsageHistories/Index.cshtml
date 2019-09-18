@@ -4,10 +4,9 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
+    
+<p >
+    All Tool History
 </p>
 <table class="table">
     <thead>
@@ -25,9 +24,6 @@
                 @Html.DisplayNameFor(model => model.Inspection)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Serviceable)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.CheckoutTime)
             </th>
             <th>
@@ -43,19 +39,16 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.User.Id)
+                @Html.DisplayFor(modelItem => item.User.FullName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Tool.Description)
+                @Html.DisplayFor(modelItem => item.Tool.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TaskFor)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Inspection)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Serviceable)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CheckoutTime)
@@ -67,9 +60,7 @@
                 @Html.DisplayFor(modelItem => item.PromiseReturn)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.UsageHistoryId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.UsageHistoryId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.UsageHistoryId">Delete</a>
+               
             </td>
         </tr>
 }

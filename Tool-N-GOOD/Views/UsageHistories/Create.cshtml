@@ -12,14 +12,7 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="UserId" class="control-label"></label>
-                <select asp-for="UserId" class ="form-control" asp-items="ViewBag.UserId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="ToolId" class="control-label"></label>
-                <select asp-for="ToolId" class ="form-control" asp-items="ViewBag.ToolId"></select>
-            </div>
+
             <div class="form-group">
                 <label asp-for="TaskFor" class="control-label"></label>
                 <input asp-for="TaskFor" class="form-control" />
@@ -30,24 +23,21 @@
                     <input class="form-check-input" asp-for="Inspection" /> @Html.DisplayNameFor(model => model.Inspection)
                 </label>
             </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Serviceable" /> @Html.DisplayNameFor(model => model.Serviceable)
-                </label>
-            </div>
+           
             <div class="form-group">
                 <label asp-for="ExpectedReturn" class="control-label"></label>
                 <input asp-for="ExpectedReturn" class="form-control" />
-                <span asp-validation-for="ExpectedReturn" class="text-danger"></span>
+                <span asp-validation-for="ExpectedReturn" class="text-danger" ></span>
             </div>
-            <div class="form-group">
-                <label asp-for="PromiseReturn" class="control-label"></label>
-                <input asp-for="PromiseReturn" class="form-control" />
-                <span asp-validation-for="PromiseReturn" class="text-danger"></span>
-            </div>
+           
+           
+          
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
+              
+               
             </div>
+            
         </form>
     </div>
 </div>

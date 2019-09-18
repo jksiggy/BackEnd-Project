@@ -4,13 +4,15 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">New TOOL!</a>
 </p>
+
+
 <table class="table">
     <thead>
+
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
@@ -34,44 +36,67 @@
                 @Html.DisplayNameFor(model => model.User)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.MeasurementType)
+                @Html.DisplayNameFor(model => model.Measurement)
             </th>
+
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Measurement)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Serviceable)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BrandType.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ToolType.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MeasurementType.Type)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ToolId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ToolId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ToolId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Measurement)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Serviceable)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BrandType.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ToolType.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Measurement)
+                </td>
+
+
+
+
+                <td>
+                    @if (!(item.UsageHistories?.ToList().Count > 0) || !(item.UsageHistories?.ToList()[item.UsageHistories.ToList().Count -1].CheckoutTime != null
+                    && !(item.UsageHistories?.ToList()[item.UsageHistories.ToList().Count -1].PromiseReturn != null)))
+                    
+                        {
+                       
+                        
+                            <a asp-action="Create" asp-controller="UsageHistories" asp-route-id="@item.ToolId" class="btn btn-warning">CheckOut</a>
+
+                            
+                        }
+                    <a asp-action="Delete" asp-route-id="@item.ToolId" class="btn btn-outline-secondary">REMOVE TOOL</a>
+                    <a asp-action="Edit" asp-route-id="@item.ToolId" class="btn btn-primary">Edit</a>
+                  
+
+
+
+                </td>
+
+
+
+
+            </tr>
+        }
     </tbody>
 </table>

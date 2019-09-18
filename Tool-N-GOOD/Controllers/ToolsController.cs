@@ -22,13 +22,28 @@ namespace Tool_N_GOOD.Controllers
         // GET: GoodTools
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Tools.Include(t => t.BrandType).Include(t => t.MeasurementType).Include(t => t.ToolType).Include(t => t.User).Where(t => t.Serviceable == true);
-            return View(await applicationDbContext.ToListAsync());
+            var tools = _context.Tools
+                .Include(t => t.BrandType)
+                .Include(t => t.MeasurementType)
+                .Include(t => t.ToolType)
+                .Include(t => t.User)
+                .Include(t => t.UsageHistories)
+                .Where(t => t.Serviceable == true);
+            return View(await tools.ToListAsync());
+
+            //foreach(var tool in tools)
+            //{
+
+            //}
+
+
+
         }
 
         // GET: BAdTools
         public async Task<IActionResult> BadTool()
         {
+
             var applicationDbContext = _context.Tools.Include(t => t.BrandType).Include(t => t.MeasurementType).Include(t => t.ToolType).Include(t => t.User).Where(t => t.Serviceable == false);
             return View(await applicationDbContext.ToListAsync());
         }
@@ -47,7 +62,7 @@ namespace Tool_N_GOOD.Controllers
                 .Include(t => t.MeasurementType)
                 .Include(t => t.ToolType)
                 .Include(t => t.User)
-                
+
 
                 .FirstOrDefaultAsync(m => m.ToolId == id);
             if (tool == null)
@@ -64,7 +79,7 @@ namespace Tool_N_GOOD.Controllers
             ViewData["BrandTypeId"] = new SelectList(_context.BrandTypes, "BrandTypeId", "Name");
             ViewData["MeasurementTypeId"] = new SelectList(_context.MeasurementTypes, "MeasurementTypeId", "Type");
             ViewData["ToolTypeId"] = new SelectList(_context.ToolTypes, "ToolTypeId", "Name");
-            ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id");
+            ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "FullName");
             return View();
         }
 

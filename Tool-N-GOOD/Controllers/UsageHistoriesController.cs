@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,11 +14,15 @@ namespace Tool_N_GOOD.Controllers
     public class UsageHistoriesController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public UsageHistoriesController(ApplicationDbContext context)
+        public UsageHistoriesController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
+
+        private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
         // GET: UsageHistories
         public async Task<IActionResult> Index()
@@ -47,11 +52,16 @@ namespace Tool_N_GOOD.Controllers
         }
 
         // GET: UsageHistories/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create(int? id)
         {
-            ViewData["ToolId"] = new SelectList(_context.Tools, "ToolId", "Description");
-            ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id");
-            return View();
+            var tool = await _context.Tools
+                .FirstOrDefaultAsync(t => t.ToolId == id);
+
+            var usageHistory = new UsageHistory();
+            usageHistory.Tool = tool;
+
+
+            return View(usageHistory);
         }
 
         // POST: UsageHistories/Create
@@ -59,10 +69,21 @@ namespace Tool_N_GOOD.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("UsageHistoryId,UserId,ToolId,TaskFor,Inspection,Serviceable,CheckoutTime,ExpectedReturn,PromiseReturn")] UsageHistory usageHistory)
+        public async Task<IActionResult> Create(int? id, [Bind("UsageHistoryId,UserId,ToolId,TaskFor,Inspection,Serviceable,CheckoutTime,ExpectedReturn,PromiseReturn")] UsageHistory usageHistory)
         {
+            //UsageHistory.UserId = user.Id;
+            ModelState.Remove("CheckoutTime");
+            ModelState.Remove("PromiseReturn");
+            ModelState.Remove("UserId");
+
             if (ModelState.IsValid)
             {
+                ApplicationUser user = await GetCurrentUserAsync();
+                var tool = await _context.Tools
+                .FirstOrDefaultAsync(t => t.ToolId == id);
+
+                usageHistory.UserId = user.Id;
+                usageHistory.ToolId = tool.ToolId;
                 _context.Add(usageHistory);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -72,9 +93,13 @@ namespace Tool_N_GOOD.Controllers
             return View(usageHistory);
         }
 
+
+
+
         // GET: UsageHistories/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+
             if (id == null)
             {
                 return NotFound();
@@ -97,15 +122,13 @@ namespace Tool_N_GOOD.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("UsageHistoryId,UserId,ToolId,TaskFor,Inspection,Serviceable,CheckoutTime,ExpectedReturn,PromiseReturn")] UsageHistory usageHistory)
         {
-            if (id != usageHistory.UsageHistoryId)
-            {
-                return NotFound();
-            }
-
+            ModelState.Remove("UserId");
             if (ModelState.IsValid)
             {
                 try
                 {
+                    ApplicationUser user = await GetCurrentUserAsync();
+                    usageHistory.UserId = user.Id;
                     _context.Update(usageHistory);
                     await _context.SaveChangesAsync();
                 }
@@ -126,6 +149,8 @@ namespace Tool_N_GOOD.Controllers
             ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id", usageHistory.UserId);
             return View(usageHistory);
         }
+
+
 
         // GET: UsageHistories/Delete/5
         public async Task<IActionResult> Delete(int? id)
@@ -161,6 +186,16 @@ namespace Tool_N_GOOD.Controllers
         private bool UsageHistoryExists(int id)
         {
             return _context.UsageHistoryies.Any(e => e.UsageHistoryId == id);
+        }
+
+        private Task<ApplicationUser> GetUserAsync()
+        {
+            return _userManager.GetUserAsync(HttpContext.User);
+        }
+        private async Task<bool> WasCreatedByUser(UsageHistory usageHistory)
+        {
+            var user = await GetUserAsync();
+            return usageHistory.UserId == user.Id;
         }
     }
 }

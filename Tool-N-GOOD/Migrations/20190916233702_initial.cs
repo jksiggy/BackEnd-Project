@@ -252,8 +252,8 @@ namespace Tool_N_GOOD.Migrations
                     Inspection = table.Column<bool>(nullable: false),
                     Serviceable = table.Column<bool>(nullable: false),
                     CheckoutTime = table.Column<DateTime>(nullable: false, defaultValueSql: "getdate()"),
-                    ExpectedReturn = table.Column<DateTime>(nullable: true),
-                    PromiseReturn = table.Column<DateTime>(nullable: false)
+                    ExpectedReturn = table.Column<DateTime>(nullable: false),
+                    PromiseReturn = table.Column<DateTime>(nullable: true, defaultValueSql: "getdate()")
                 },
                 constraints: table =>
                 {
@@ -275,7 +275,7 @@ namespace Tool_N_GOOD.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "FirstName", "LastName", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "Occupation", "PasswordHash", "Phone", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "00000000-ffff-ffff-ffff-ffffffffffff", 0, "b2083bd4-e60f-4c9e-a71d-3ce895ef9084", "warren@homedepot.com", true, "warren", "delenger", false, null, "WARREN@HOMEDEPOT.COM", "WARREN@HOMEDEPOT.COM", "Mechanic 5", "AQAAAAEAACcQAAAAEIRpxFl3fvvQc/mwJn7Q3S8f0Br/U5GBcc0eLqB+C4AZqpWFl+wWitC5tt4J+vf9UA==", "615 473 434", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "warren@homedepot.com" });
+                values: new object[] { "00000000-ffff-ffff-ffff-ffffffffffff", 0, "eeb31451-4416-4a1d-8610-84df4fdd3efe", "warren@homedepot.com", true, "warren", "delenger", false, null, "WARREN@HOMEDEPOT.COM", "WARREN@HOMEDEPOT.COM", "Mechanic 5", "AQAAAAEAACcQAAAAEFjTvHzGH6OUr6Aj6OLQeJVAL2iNsiqF+RYpmrMvMwKl2Nlr/+5hqI8tVNSFksAGMw==", "615 473 434", null, false, "7f434309-a4d9-48e9-9ebb-8803db794577", false, "warren@homedepot.com" });
 
             migrationBuilder.InsertData(
                 table: "BrandTypes",
