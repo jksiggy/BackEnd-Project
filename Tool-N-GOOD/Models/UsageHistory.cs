@@ -26,8 +26,8 @@ namespace Tool_N_GOOD.Models
         public string TaskFor { get; set; }
 
 
-        [Required]
-        [InspectionValidation(ErrorMessage ="bad")]
+        [Required(ErrorMessage ="Need To be Inspected")]
+        [InspectionValidation]
         public bool Inspection { get; set; }
 
 
