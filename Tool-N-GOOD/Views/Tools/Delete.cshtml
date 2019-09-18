@@ -54,7 +54,7 @@
             @Html.DisplayNameFor(model => model.User)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.User.Id)
+            @Html.DisplayFor(model => model.User.FullName)
         </dd class>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.MeasurementType)
@@ -67,6 +67,6 @@
     <form asp-action="Delete">
         <input type="hidden" asp-for="ToolId" />
         <input type="submit" value="Delete" class="btn btn-outline-primary" /> 
-        <a asp-action="Index" class="btn btn-danger">Cancle</a>
+        <a asp-action="Index" class="btn btn-outline-danger">Cancle</a>
     </form>
 </div>
