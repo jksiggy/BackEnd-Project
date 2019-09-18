@@ -12,9 +12,7 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.UsageHistoryies[0].User)
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.UsageHistoryies[0].Tool)
             </th>
@@ -38,9 +36,7 @@
     <tbody>
 @foreach (var item in Model.UsageHistoryies) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.FullName)
-            </td>
+           
             <td>
                 @Html.DisplayFor(modelItem => item.Tool.Name)
             </td>
@@ -57,7 +53,7 @@
                 @Html.DisplayFor(modelItem => item.PromiseReturn)
             </td>
             <td>
-                <a asp-action="Details" asp-controller="UsageHistories" asp-route-id="@item.UsageHistoryId">Details</a> 
+                @*<a asp-action="Details" asp-controller="UsageHistories" asp-route-id="@item.UsageHistoryId">Details</a>*@ 
                 <a asp-action="Edit" asp-controller="UsageHistories" asp-route-id="@item.UsageHistoryId">Edit</a> 
 
             </td>

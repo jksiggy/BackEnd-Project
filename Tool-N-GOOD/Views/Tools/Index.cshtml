@@ -6,7 +6,7 @@
 
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">New TOOL!</a>
 </p>
 
 
@@ -81,13 +81,13 @@
                         {
                        
                         
-                            <a asp-action="Create" asp-controller="UsageHistories" asp-route-id="@item.ToolId">Check-Out Tool</a>
+                            <a asp-action="Create" asp-controller="UsageHistories" asp-route-id="@item.ToolId" class="btn btn-warning">CheckOut</a>
 
                             
                         }
-                    <a asp-action="Delete" asp-route-id="@item.ToolId">Delete</a>
-                    <a asp-action="Edit" asp-route-id="@item.ToolId">Edit</a>
-                    <a asp-action="Details" asp-route-id="@item.ToolId">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.ToolId" class="btn btn-outline-secondary">Delete</a>
+                    <a asp-action="Edit" asp-route-id="@item.ToolId" class="btn btn-primary">Edit</a>
+                  
 
 
 

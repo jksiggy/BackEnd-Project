@@ -6,15 +6,21 @@
     <title>@ViewData["Title"] - Tool_N_GOOD</title>
 
     <environment include="Development">
-        <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css//lamestyling.css" />
+        <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.css" />
+
+      
+
     </environment>
     <environment exclude="Development">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
-              crossorigin="anonymous"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"/>
+        
+        <link rel="stylesheet" href="~/css//lamestyling.css" />
+        <link rel="stylesheet" href="~/lib/font-awesome/css/font-awesome.min.css" />
+
+        asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+        asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"
+        crossorigin="anonymous"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"/>
     </environment>
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
@@ -34,11 +40,12 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Tools" asp-action="Index">Tool</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Tools" asp-action="BadTool">Damage Tool</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Tools" asp-action="BadTool">Damage Tool</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="UsageHistories" asp-action="Index">Usage History</a>
                         </li>
+                        @*<i class="fab fa-amazon"></i>*@
                     </ul>
                 </div>
             </div>

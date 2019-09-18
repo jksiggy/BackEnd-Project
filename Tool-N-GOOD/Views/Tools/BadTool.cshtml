@@ -59,8 +59,9 @@
                 @Html.DisplayFor(modelItem => item.MeasurementType.Type)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ToolId">Edit</a> 
-                
+                <a asp-action="Edit" asp-route-id="@item.ToolId" class="btn btn-primary">Edit</a>
+                <a asp-action="Delete" asp-route-id="@item.ToolId" class="btn btn-outline-secondary">REMOVE TOOL</a>
+
             </td>
         </tr>
 }

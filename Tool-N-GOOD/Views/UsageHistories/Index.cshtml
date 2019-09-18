@@ -4,9 +4,9 @@
     ViewData["Title"] = "Index";
 }
 
-
-<p>
-    <a asp-action="Create">New Usage</a>
+    
+<p >
+    All Tool History
 </p>
 <table class="table">
     <thead>
@@ -28,6 +28,9 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ExpectedReturn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PromiseReturn)
             </th>
             <th></th>
         </tr>
@@ -54,9 +57,10 @@
                 @Html.DisplayFor(modelItem => item.ExpectedReturn)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.UsageHistoryId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.UsageHistoryId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.UsageHistoryId">Delete</a>
+                @Html.DisplayFor(modelItem => item.PromiseReturn)
+            </td>
+            <td>
+               
             </td>
         </tr>
 }

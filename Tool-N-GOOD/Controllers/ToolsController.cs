@@ -79,7 +79,7 @@ namespace Tool_N_GOOD.Controllers
             ViewData["BrandTypeId"] = new SelectList(_context.BrandTypes, "BrandTypeId", "Name");
             ViewData["MeasurementTypeId"] = new SelectList(_context.MeasurementTypes, "MeasurementTypeId", "Type");
             ViewData["ToolTypeId"] = new SelectList(_context.ToolTypes, "ToolTypeId", "Name");
-            ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id");
+            ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "FullName");
             return View();
         }
 
