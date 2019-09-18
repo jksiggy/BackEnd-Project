@@ -39,11 +39,12 @@ namespace Tool_N_GOOD.Models
         [Display(Name = "Checkout Date")]
         public DateTime? CheckoutTime { get; set; }
 
+        [DataType(DataType.Date)]
         [Required]
         [Display(Name = "Expected Return Date")]
         public DateTime? ExpectedReturn { get; set; }
 
-     
+        [DataType(DataType.Date)]
         [Display(Name = "Actual Return Date")]
         [MyDate(ErrorMessage = "Put Todays Date")]
         public DateTime? PromiseReturn { get; set; }
@@ -64,7 +65,7 @@ namespace Tool_N_GOOD.Models
         public override bool IsValid(object value)// Return a boolean value: true == IsValid, false != IsValid
         {
             DateTime d = Convert.ToDateTime(value);
-            return d >= DateTime.Now; //Dates  equal to today are valid (true)
+            return d == DateTime.Now.Date; //Dates  equal to today are valid (true)
 
         }
     }

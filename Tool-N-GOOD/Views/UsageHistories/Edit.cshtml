@@ -17,17 +17,9 @@
             <div class="form-group">
                 <label asp-for="TaskFor" class="control-label"></label>
                 <input asp-for="TaskFor" class="form-control" />
+                <input type="hidden" asp-for="Inspection" class="form-group form-check">
+                <input type="hidden" asp-for="Serviceable" class="form-group form-check">
                 <span asp-validation-for="TaskFor" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Inspection" /> @Html.DisplayNameFor(model => model.Inspection)
-                </label>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Serviceable" /> @Html.DisplayNameFor(model => model.Serviceable)
-                </label>
             </div>
             <div class="form-group">
                 <label asp-for="CheckoutTime" class="control-label"></label>
