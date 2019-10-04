@@ -28,7 +28,9 @@ namespace Tool_N_GOOD.Controllers
                 .Include(t => t.ToolType)
                 .Include(t => t.User)
                 .Include(t => t.UsageHistories)
-                .Where(t => t.Serviceable == true);
+                .Where(t => t.Serviceable == true)
+            .OrderBy(t => t.Name);
+            //.ThenBy(t => t.Name);
             return View(await tools.ToListAsync());
 
             //foreach(var tool in tools)
