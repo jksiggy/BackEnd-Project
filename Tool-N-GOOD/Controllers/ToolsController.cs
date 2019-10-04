@@ -28,7 +28,9 @@ namespace Tool_N_GOOD.Controllers
                 .Include(t => t.ToolType)
                 .Include(t => t.User)
                 .Include(t => t.UsageHistories)
-                .Where(t => t.Serviceable == true);
+                .Where(t => t.Serviceable == true)
+            .OrderBy(t => t.Name);
+            //.ThenBy(t => t.Name);
             return View(await tools.ToListAsync());
 
             //foreach(var tool in tools)
@@ -119,7 +121,7 @@ namespace Tool_N_GOOD.Controllers
             ViewData["BrandTypeId"] = new SelectList(_context.BrandTypes, "BrandTypeId", "Name", tool.BrandTypeId);
             ViewData["MeasurementTypeId"] = new SelectList(_context.MeasurementTypes, "MeasurementTypeId", "Type", tool.MeasurementTypeId);
             ViewData["ToolTypeId"] = new SelectList(_context.ToolTypes, "ToolTypeId", "Name", tool.ToolTypeId);
-            ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "Id", tool.UserId);
+            ViewData["UserId"] = new SelectList(_context.ApplicationUsers, "Id", "FullName", tool.UserId);
             return View(tool);
         }
 

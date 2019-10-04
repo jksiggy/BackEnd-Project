@@ -53,8 +53,12 @@
                 @Html.DisplayFor(modelItem => item.PromiseReturn)
             </td>
             <td>
-                @*<a asp-action="Details" asp-controller="UsageHistories" asp-route-id="@item.UsageHistoryId">Details</a>*@ 
-                <a asp-action="Edit" asp-controller="UsageHistories" asp-route-id="@item.UsageHistoryId">Edit</a> 
+                @*<a asp-action="Details" asp-controller="UsageHistories" asp-route-id="@item.UsageHistoryId">Details</a>*@
+
+                @if (item.PromiseReturn == null) 
+                {
+                    <a asp-action="Edit" asp-controller="UsageHistories" asp-route-id="@item.UsageHistoryId" class="btn btn-warning">Return Tool</a>
+                }
 
             </td>
         </tr>
