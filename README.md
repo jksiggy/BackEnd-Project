@@ -17,7 +17,7 @@ Why do you want to build this application?
    * Users will be able to create an account and log in.
    * Track the User and Tool 
     * The user would be to take tools from the toolbox and track the date and when to put it back in the toolbox.
-    * If the tools or serviceable or not, and separate from serviceable.
+     * If the tools or serviceable or not, and separate from serviceable.
 
 
 
